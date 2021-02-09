@@ -44,7 +44,8 @@ Control de hilos con wait/notify. Productor/consumidor.
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente2.png?raw=true" alt="Sublime's custom image"/>
   </p>
-	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). 
+
+<p>La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). </p>
 
 #### Parte II. – Antes de terminar la clase.
 
