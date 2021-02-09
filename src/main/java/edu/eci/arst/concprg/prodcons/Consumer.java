@@ -16,10 +16,13 @@ import java.util.logging.Logger;
 public class Consumer extends Thread{
     
     private Queue<Integer> queue;
+    private Object lock;
+    private Object lock2;
     
-    
-    public Consumer(Queue<Integer> queue){
-        this.queue=queue;        
+    public Consumer(Queue<Integer> queue ,Object lock , Object lock2){
+        this.queue=queue;
+        this.lock=lock;
+        this.lock2=lock2;
     }
     
     @Override
@@ -28,14 +31,25 @@ public class Consumer extends Thread{
 
             if (queue.size() > 0) {
                 int elem=queue.poll();
-                System.out.println("Consumer consumes "+elem);                                
+                System.out.println("Consumer consumes "+elem);      
+                synchronized(lock2){
+                    lock2.notifyAll();
+                }
+            
             }
             else{
+               synchronized(lock){
+                   try {
+                       lock.wait();
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               }
+            }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
-            }
             }
             
         }
