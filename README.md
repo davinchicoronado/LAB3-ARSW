@@ -18,7 +18,7 @@ Control de hilos con wait/notify. Productor/consumidor.
 
 1.	Revise el funcionamiento del programa y ejecútelo. Mientras esto ocurren, ejecute jVisualVM y revise el consumo de CPU del proceso correspondiente. A qué se debe este consumo?, cual es la clase responsable?
 
-	El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Procuder no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, segun la grafica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Procuder pausa su ejecución por un segundo.
+	El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Producer no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, según la gráfica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Producerr pausa su ejecución por un segundo.
   
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm.png?raw=true" alt="Sublime's custom image"/>
@@ -32,6 +32,7 @@ Control de hilos con wait/notify. Productor/consumidor.
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente.png?raw=true" alt="Sublime's custom image"/>
   </p>
  	Tras estos cambios procedemos a la ejecución y vemos de nuevo en jVisualVM los resultados. Se puede evidenciar que el consumo es casi nulo reduciendo drasticamente el uso de la CPU.
+	
  
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm2.png?raw=true" alt="Sublime's custom image"/>
