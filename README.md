@@ -16,37 +16,37 @@ Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos pr
 
 Control de hilos con wait/notify. Productor/consumidor.
 
-1. Revise el funcionamiento del programa y ejecútelo. Mientras esto ocurren, ejecute jVisualVM y revise el consumo de CPU del proceso correspondiente. A qué se debe este consumo?, cual es la clase responsable?
+1.	Revise el funcionamiento del programa y ejecútelo. Mientras esto ocurren, ejecute jVisualVM y revise el consumo de CPU del proceso correspondiente. A qué se debe este consumo?, cual es la clase responsable?
 
-El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Procuder no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, segun la grafica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Procuder pausa su ejecución por un segundo.
+	El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Procuder no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, segun la grafica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Procuder pausa su ejecución por un segundo.
   
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm.png?raw=true" alt="Sublime's custom image"/>
   </p>
 
-2. Haga los ajustes necesarios para que la solución use más eficientemente la CPU, teniendo en cuenta que -por ahora- la producción es lenta y el consumo es rápido. Verifique con JVisualVM que el consumo de CPU se reduzca.
+2.	Haga los ajustes necesarios para que la solución use más eficientemente la CPU, teniendo en cuenta que -por ahora- la producción es lenta y el consumo es rápido. Verifique con JVisualVM que el consumo de CPU se reduzca.
 
-Para lograr esto, se deben sincronizar los threads, la clase Consumer debería esperar cuando la cola esta vacia y no pueda sacar un elemento, para cuando la clase Producer agregue un elemento permita seguir la ejecución de Consumer.
+	Para lograr esto, se deben sincronizar los threads, la clase Consumer debería esperar cuando la cola esta vacia y no pueda sacar un elemento, para cuando la clase Producer agregue un elemento permita seguir la ejecución de Consumer.
 
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente.png?raw=true" alt="Sublime's custom image"/>
   </p>
  
-Tras estos cambios procedemos a la ejecución y vemos de nuevo en jVisualVM los resultados. Se puede evidenciar que el consumo es casi nulo reduciendo drasticamente el uso de la CPU.
+	Tras estos cambios procedemos a la ejecución y vemos de nuevo en jVisualVM los resultados. Se puede evidenciar que el consumo es casi nulo reduciendo drasticamente el uso de la CPU.
  
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm2.png?raw=true" alt="Sublime's custom image"/>
   </p>
 
-3. Haga que ahora el productor produzca muy rápido, y el consumidor consuma lento. Teniendo en cuenta que el productor conoce un límite de Stock (cuantos elementos debería tener, a lo sumo en la cola), haga que dicho límite se respete. Revise el API de la colección usada como cola para ver cómo garantizar que dicho límite no se supere. Verifique que, al poner un límite pequeño para el 'stock', no haya consumo alto de CPU ni errores.
+3.	Haga que ahora el productor produzca muy rápido, y el consumidor consuma lento. Teniendo en cuenta que el productor conoce un límite de Stock (cuantos elementos debería tener, a lo sumo en la cola), haga que dicho límite se respete. Revise el API de la colección usada como cola para ver cómo garantizar que dicho límite no se supere. Verifique que, al poner un límite pequeño para el 'stock', no haya consumo alto de CPU ni errores.
 
-Para que el productor produzca muy rapido, y el consumidor consuma lento se debe quitar el mecanismo que duerme el thread por un tiempo determinado (Thread.sleep(1000)) de Producer y ponerlo en  Consumer, y para lograr que el productor no supere el limite de Stock se debe sincronizar los threads para cuando la cola tenga el mismo número de elementos al del stock, el Procuder queda en modo de espera para cuando un Consumer saca un elemento permitira que Procuder siga con su ejecucipon.
+	Para que el productor produzca muy rapido, y el consumidor consuma lento se debe quitar el mecanismo que duerme el thread por un tiempo determinado (Thread.sleep(1000)) de Producer y ponerlo en  Consumer, y para lograr que el productor no supere el limite de Stock se debe sincronizar los threads para cuando la cola tenga el mismo número de elementos al del stock, el Procuder queda en modo de espera para cuando un Consumer saca un elemento permitira que Procuder siga con su ejecucipon.
 
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente2.png?raw=true" alt="Sublime's custom image"/>
   </p>
 
-La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). 
+	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). 
 #### Parte II. – Antes de terminar la clase.
 
 Teniendo en cuenta los conceptos vistos de condición de carrera y sincronización, haga una nueva versión -más eficiente- del ejercicio anterior (el buscador de listas negras). En la versión actual, cada hilo se encarga de revisar el host en la totalidad del subconjunto de servidores que le corresponde, de manera que en conjunto se están explorando la totalidad de servidores. Teniendo esto en cuenta, haga que:
