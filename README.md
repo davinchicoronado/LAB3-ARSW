@@ -40,12 +40,12 @@ Control de hilos con wait/notify. Productor/consumidor.
 
 3.	Haga que ahora el productor produzca muy rápido, y el consumidor consuma lento. Teniendo en cuenta que el productor conoce un límite de Stock (cuantos elementos debería tener, a lo sumo en la cola), haga que dicho límite se respete. Revise el API de la colección usada como cola para ver cómo garantizar que dicho límite no se supere. Verifique que, al poner un límite pequeño para el 'stock', no haya consumo alto de CPU ni errores.
 
-	Para que el productor produzca muy rapido, y el consumidor consuma lento se debe quitar el mecanismo que duerme el thread por un tiempo determinado (Thread.sleep(1000)) 	de Producer y ponerlo en  Consumer, y para lograr que el productor no supere el limite de Stock se debe sincronizar los threads para cuando la cola tenga el mismo número 	de elementos al del stock, el Procuder queda en modo de espera para cuando un Consumer saca un elemento permitira que Procuder siga con su ejecucipon.
+	Para que el productor produzca muy rapido, y el consumidor consuma lento se debe quitar el mecanismo que duerme el thread por un tiempo determinado (Thread.sleep(1000)) 	de Producer y ponerlo en  Consumer, y para lograr que el productor no supere el limite de Stock se debe sincronizar los threads para cuando la cola tenga el mismo número 	de elementos al del stock, el Producer queda en modo de espera para cuando un Consumer saca un elemento permitira que Procuder siga con su ejecucipon.
 
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente2.png?raw=true" alt="Sublime's custom image"/>
   </p>
-	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor 		del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE 	((2^31)-1). </p>
+	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor 		del stock aparecerá en la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1).
 
 #### Parte II. – Antes de terminar la clase.
 
