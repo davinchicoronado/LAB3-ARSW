@@ -31,8 +31,7 @@ Control de hilos con wait/notify. Productor/consumidor.
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente.png?raw=true" alt="Sublime's custom image"/>
   </p>
- 
-	Tras estos cambios procedemos a la ejecución y vemos de nuevo en jVisualVM los resultados. Se puede evidenciar que el consumo es casi nulo reduciendo drasticamente el uso de la CPU.
+ 	Tras estos cambios procedemos a la ejecución y vemos de nuevo en jVisualVM los resultados. Se puede evidenciar que el consumo es casi nulo reduciendo drasticamente el uso de la CPU.
  
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm2.png?raw=true" alt="Sublime's custom image"/>
@@ -45,7 +44,6 @@ Control de hilos con wait/notify. Productor/consumidor.
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente2.png?raw=true" alt="Sublime's custom image"/>
   </p>
-	
 	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). 
 
 #### Parte II. – Antes de terminar la clase.
