@@ -45,8 +45,9 @@ Control de hilos con wait/notify. Productor/consumidor.
  <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/eficiente2.png?raw=true" alt="Sublime's custom image"/>
   </p>
-
+	
 	La anterior imagen en vez del valor de 30 debería ser el del stock, pero siguiendo las instrucciones del laboratorio se dejó como ejemplo, en el repositorio el valor del stock aparecerá la condición. Viendo la documentación de Java el maximo de elementos que puede tener la cola de tipo LinkedBlockingQueue es el de Integer.MAX_VALUE ((2^31)-1). 
+
 #### Parte II. – Antes de terminar la clase.
 
 Teniendo en cuenta los conceptos vistos de condición de carrera y sincronización, haga una nueva versión -más eficiente- del ejercicio anterior (el buscador de listas negras). En la versión actual, cada hilo se encarga de revisar el host en la totalidad del subconjunto de servidores que le corresponde, de manera que en conjunto se están explorando la totalidad de servidores. Teniendo esto en cuenta, haga que:
