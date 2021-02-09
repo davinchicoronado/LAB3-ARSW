@@ -17,6 +17,7 @@ Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos pr
 Control de hilos con wait/notify. Productor/consumidor.
 
 1. Revise el funcionamiento del programa y ejecútelo. Mientras esto ocurren, ejecute jVisualVM y revise el consumo de CPU del proceso correspondiente. A qué se debe este consumo?, cual es la clase responsable?
+El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Procuder no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, segun la grafica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Procuder pausa su ejecución por un segundo.
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm.png?raw=true" alt="Sublime's custom image"/>
   </p>
