@@ -83,7 +83,11 @@ Sincronización y Dead-Locks.
 
 3.	Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
 
-	Ejecutando el programa se puede verificar que la variante no se cumple ya que este valor cambia en distintas ocaciones al precionar ‘pause and check’ y ademas no corresponde al numero de jugadores que en este ejemplo es 3.
+	Ejecutando el programa se puede verificar que la variante no se cumple ya que este valor cambia en distintas ocaciones al precionar ‘pause and check’ y ademas no corresponde al número de jugadores que en este ejemplo es 3.
+	
+<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/invariante.png?raw=true" alt="Sublime's custom image"/>
+  </p>	
 	
 	
 
