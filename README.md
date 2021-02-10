@@ -72,16 +72,21 @@ Sincronización y Dead-Locks.
 	* Cada jugador, permanentemente, ataca a algún otro inmortal. El que primero ataca le resta M puntos de vida a su contrincante, y aumenta en esta misma cantidad sus propios puntos de vida.
 	* El juego podría nunca tener un único ganador. Lo más probable es que al final sólo queden dos, peleando indefinidamente quitando y sumando puntos de vida.
 
-2. Revise el código e identifique cómo se implemento la funcionalidad antes indicada. Dada la intención del juego, un invariante debería ser que la sumatoria de los puntos de vida de todos los jugadores siempre sea el mismo(claro está, en un instante de tiempo en el que no esté en proceso una operación de incremento/reducción de tiempo). Para este caso, para N jugadores, cual debería ser este valor?.
+2.	Revise el código e identifique cómo se implemento la funcionalidad antes indicada. Dada la intención del juego, un invariante debería ser que la sumatoria de los puntos de vida de todos los jugadores siempre sea el mismo(claro está, en un instante de tiempo en el que no esté en proceso una operación de incremento/reducción de tiempo). Para este caso, para N jugadores, cual debería ser este valor?.
+	
+	El proceso es el siguiente, cuando presionamos "Start" (dejando a un lado el codigo de la GUI) se llama un metodo que crea los jugadores inmortales y retorna un ArrayList que los contiene, pero antes, cada vez que crea un jugador se le envia en el constructor el ArrayList y despues de ser instanciado se agrega al ArrayList y es de esta manera como cada jugador N tiene referencia de los otros jugadores N-1. Luego en el metodo principal se itera sobre el ArrayList que retorno el metodo anteriormente descrito para darle ejecución a los hilos. Todos los jugadores inician con una vida de 100 y daño 10.
+	
+	Luego en el metodo run de un determinado hilo jugador habra un bucle infinito en donde cada iteración seleccionará otro jugador de su ArrayList y procederan a "pelear" con el metodo fight() del hilo anfitrión en donde si es el caso de que el jugador seleccionado tiene vida, le restara vida equivalente al daño y mostrara un mensaje de quienes fueron los contrincantes, de lo contrario mostrara que el jugador seleccionado esta muerto. 
+	
+	Ahora la invariante siempre es constante así que deberia ser N*1OO (N veces 100 que corresponde la cantidad de vida de cada jugador).
 
-El proceso es el siguiente, cuando presionamos "Start" (dejando a un lado el codigo de la GUI) se llama un metodo que crea los jugadores inmortales y retorna un ArrayList que los contiene, pero antes, cada vez que crea un jugador se le envia en el constructor el ArrayList y despues de ser instanciado se agrega al ArrayList y es de esta manera como cada jugador N tiene referencia de los otros jugadores N-1. Luego en el metodo principal se itera sobre el ArrayList que retorno el metodo anteriormente descrito para darle ejecución a los hilos. Todos los jugadores inician con una vida de 100 y daño 10.
 
-Luego en el metodo run de un determinado hilo jugador habra un bucle infinito en donde cada iteración seleccionará otro jugador de su ArrayList y procederan a "pelear" con el metodo fight() del hilo anfitrión en donde si es el caso de que el jugador seleccionado tiene vida, le restara vida equivalente al daño y mostrara un mensaje de quienes fueron los contrincantes, de lo contrario mostrara que el jugador seleccionado esta muerto. 
+3.	Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
 
-Anteriormente se habló de un ArrayList de un jugador N que guardaba N-1 jugadores pero en realidad esto no ocurre ya que todos hacen referencía al mismo objeto entonces de por si todos tienen el mismo ArrayList cada vez que este sufre un cambio, que a fin de cuentas guarda a todos los jugadores entonces dicho esto tenemos que el ArrayList es una invariante que es la misma para los N jugadores. 
+	Ejecutando el programa se puede verificar que la variante no se cumple ya que este valor cambia en distintas ocaciones al precionar ‘pause and check’ y ademas no corresponde al numero de jugadores que en este ejemplo es 3.
+	
+	
 
-
-3. Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
 
 4. Una primera hipótesis para que se presente la condición de carrera para dicha función (pause and check), es que el programa consulta la lista cuyos valores va a imprimir, a la vez que otros hilos modifican sus valores. Para corregir esto, haga lo que sea necesario para que efectivamente, antes de imprimir los resultados actuales, se pausen todos los demás hilos. Adicionalmente, implemente la opción ‘resume’.
 
