@@ -53,11 +53,11 @@ Teniendo en cuenta los conceptos vistos de condición de carrera y sincronizaci�
 
 - La búsqueda distribuida se detenga (deje de buscar en las listas negras restantes) y retorne la respuesta apenas, en su conjunto, los hilos hayan detectado el número de ocurrencias requerido que determina si un host es confiable o no (_BLACK_LIST_ALARM_COUNT_).
 
-Para lograr esto se creó un monitor que sincronizará los hilos, para cuando un hilo haye que la dirección IP fue encontrada en una lista negra, él entrara a una región crítica que es cuando incremete una unidad a variable de tipo entero, que es compartida por los demas hilos. También otra región crítica que bien no es tan relevante pero podria presentarse inconcistencias es el de consultar este contador para permitir finalizar la ejecucución de los hilos. El monitor nos garantizará el mecanismo de exclusión mutua.  
+	Para lograr esto se creó un monitor que sincronizará los hilos, para cuando un hilo haye que la dirección IP fue encontrada en una lista negra, él entrara a una región crítica que es cuando incremete una unidad a variable de tipo entero, que es compartida por los demas hilos. También otra región crítica que bien no es tan relevante pero podria presentarse inconcistencias es el de consultar este contador para permitir finalizar la ejecucución de los hilos. El monitor nos garantizará el mecanismo de exclusión mutua.  
 
 - Lo anterior, garantizando que no se den condiciones de carrera.
 
-Como se describia anteriormente cuando se garantiza la exclusión mutua podemos asegurar que los hilos que de por si comparten un recurso (ocurrencesCount) no ingresen a modificarlo o consultarlo al mismo tiempo.
+	Como se describia anteriormente cuando se garantiza la exclusión mutua podemos asegurar que los hilos que de por si comparten un recurso (ocurrencesCount) no ingresen a modificarlo o consultarlo al mismo tiempo.
 
 #### Parte III. – Avance para la siguiente clase
 
