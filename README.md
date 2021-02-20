@@ -18,7 +18,7 @@ Control de hilos con wait/notify. Productor/consumidor.
 
 1.	Revise el funcionamiento del programa y ejecútelo. Mientras esto ocurren, ejecute jVisualVM y revise el consumo de CPU del proceso correspondiente. A qué se debe este consumo?, cual es la clase responsable?
 
-	El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Producer no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, según la gráfica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Producerr pausa su ejecución por un segundo.
+	El consumo se debe a la clase Consumer ya que tiene un ciclo infinito que a diferencia de la clase Producer no tiene un mecanismo que lo haga parar por un lapso de tiempo y esto hace que el ciclo se ejecuta muchas veces y rapidamente consumiendo recursos de la CPU, según la gráfica de la siguiente imagen el uso de la CPU varia entre 23% a 27% aproximadamente cada segundo, debido a que la clase Producer pausa su ejecución por un segundo.
   
   <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/jvm.png?raw=true" alt="Sublime's custom image"/>
@@ -83,7 +83,11 @@ Sincronización y Dead-Locks.
 
 3.	Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
 
-	Ejecutando el programa se puede verificar que la variante no se cumple ya que este valor cambia en distintas ocaciones al precionar ‘pause and check’ y ademas no corresponde al numero de jugadores que en este ejemplo es 3.
+	Ejecutando el programa se puede verificar que la variante no se cumple ya que este valor cambia en distintas ocaciones al precionar ‘pause and check’ y ademas no corresponde al número de jugadores que en este ejemplo es 3.
+	
+<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/invariante.png?raw=true" alt="Sublime's custom image"/>
+  </p>	
 	
 	
 
