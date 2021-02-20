@@ -9,6 +9,7 @@ public class Immortal extends Thread {
     
     private int health;
     
+    
     private int defaultDamageValue;
 
     private final List<Immortal> immortalsPopulation;
@@ -16,20 +17,27 @@ public class Immortal extends Thread {
     private final String name;
 
     private final Random r = new Random(System.currentTimeMillis());
+    
+    private final MonitorController controller;
+    
+    private final Object lock;
 
-
-    public Immortal(String name, List<Immortal> immortalsPopulation, int health, int defaultDamageValue, ImmortalUpdateReportCallback ucb) {
+    public Immortal(String name, List<Immortal> immortalsPopulation, int health, int defaultDamageValue, ImmortalUpdateReportCallback ucb, MonitorController controller, Object lock) {
         super(name);
         this.updateCallback=ucb;
         this.name = name;
         this.immortalsPopulation = immortalsPopulation;
         this.health = health;
         this.defaultDamageValue=defaultDamageValue;
+        this.controller=controller;
+        this.lock=lock;
     }
 
     public void run() {
 
-        while (true) {
+        while (health!=0) {
+            controller.isPaused();
+
             Immortal im;
 
             int myIndex = immortalsPopulation.indexOf(this);
@@ -42,8 +50,11 @@ public class Immortal extends Thread {
             }
 
             im = immortalsPopulation.get(nextFighterIndex);
-
-            this.fight(im);
+            
+            synchronized(lock){
+                this.fight(im);
+            }
+            
 
             try {
                 Thread.sleep(1);
@@ -57,6 +68,7 @@ public class Immortal extends Thread {
 
     public void fight(Immortal i2) {
 
+        
         if (i2.getHealth() > 0) {
             i2.changeHealth(i2.getHealth() - defaultDamageValue);
             this.health += defaultDamageValue;
