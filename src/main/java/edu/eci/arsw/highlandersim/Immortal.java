@@ -64,6 +64,7 @@ public class Immortal extends Thread {
             }
 
         }
+        immortalsPopulation.remove(this);
 
     }
 
