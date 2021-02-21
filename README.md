@@ -124,7 +124,7 @@ Sincronización y Dead-Locks.
 
 	* 	Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
 	* 	Corrija el problema anterior __SIN hacer uso de sincronización__, pues volver secuencial el acceso a la lista compartida de inmortales haría extremadamente lenta la simulación.
-Esta parte es simple se debe cambiar el bucle infinito y poner la condición para cuando el inmortal tenga vida 0 este bucle finalice y despues que este se borre del arraylist.
+		Esta parte es simple se debe cambiar el bucle infinito y poner la condición para cuando el inmortal tenga vida 0 este bucle finalice y despues que este se borre del arraylist.
 <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/correcion.png?raw=true" alt="Sublime's custom image"/>
   </p>		
