@@ -78,7 +78,7 @@ Sincronización y Dead-Locks.
 	
 	Luego en el metodo run de un determinado hilo jugador habra un bucle infinito en donde cada iteración seleccionará otro jugador de su ArrayList y procederan a "pelear" con el metodo fight() del hilo anfitrión en donde si es el caso de que el jugador seleccionado tiene vida, le restara vida equivalente al daño y mostrara un mensaje de quienes fueron los contrincantes, de lo contrario mostrara que el jugador seleccionado esta muerto. 
 	
-	Ahora la invariante siempre es constante así que deberia ser N*1OO (N veces 100 que corresponde la cantidad de vida de cada jugador).
+	Ahora la invariante siempre es constante así que deberia ser N*1OO (N veces 100, que N corresponde al número de jugadores y 100 la cantidad de vida de cada jugador).
 
 
 3.	Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
@@ -94,9 +94,10 @@ Sincronización y Dead-Locks.
 
 4. Una primera hipótesis para que se presente la condición de carrera para dicha función (pause and check), es que el programa consulta la lista cuyos valores va a imprimir, a la vez que otros hilos modifican sus valores. Para corregir esto, haga lo que sea necesario para que efectivamente, antes de imprimir los resultados actuales, se pausen todos los demás hilos. Adicionalmente, implemente la opción ‘resume’.
 
-5. Verifique nuevamente el funcionamiento (haga clic muchas veces en el botón). Se cumple o no el invariante?.
+5. 	Verifique nuevamente el funcionamiento (haga clic muchas veces en el botón). Se cumple o no el invariante?.
+	Luego de modificar el metodo "pause and check" y el metodo "resume" no se cumple la invariante.
 
-6. Identifique posibles regiones críticas en lo que respecta a la pelea de los inmortales. Implemente una estrategia de bloqueo que evite las condiciones de carrera. Recuerde que si usted requiere usar dos o más ‘locks’ simultáneamente, puede usar bloques sincronizados anidados:
+6.	Identifique posibles regiones críticas en lo que respecta a la pelea de los inmortales. Implemente una estrategia de bloqueo que evite las condiciones de carrera. 		Recuerde que si usted requiere usar dos o más ‘locks’ simultáneamente, puede usar bloques sincronizados anidados:
 
 	```java
 	synchronized(locka){
@@ -105,16 +106,28 @@ Sincronización y Dead-Locks.
 		}
 	}
 	```
+	La siguiente imagen es donde se escuentra la región crítica, para poder aplicar el concepto de exclusión mutua, se sincronizarán los hilos.
+<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/regionCritica.png?raw=true" alt="Sublime's custom image"/>
+  </p>		
+	
 
 7. Tras implementar su estrategia, ponga a correr su programa, y ponga atención a si éste se llega a detener. Si es así, use los programas jps y jstack para identificar por qué el programa se detuvo.
 
 8. Plantee una estrategia para corregir el problema antes identificado (puede revisar de nuevo las páginas 206 y 207 de _Java Concurrency in Practice_).
 
-9. Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
+9. 	Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos	grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
 
-10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
-	* Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
-	* Corrija el problema anterior __SIN hacer uso de sincronización__, pues volver secuencial el acceso a la lista compartida de inmortales haría extremadamente lenta la simulación.
+	Luego de desarrollar el punto 6 y ejecutandolo varias veces  se pudó evidenciar que no ocurrienron errores y en ningún momento se detuvo la ejecución ademas de que la información proporcionada estaba bien, por esta razón se omiten los puntos 7 y 8, cabe destacar que en las pruebas también no hubo ningún problema con los casos de 100, 1000 o 10000 inmortales.
+
+10. 	Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
+	* 	Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
+	* 	Corrija el problema anterior __SIN hacer uso de sincronización__, pues volver secuencial el acceso a la lista compartida de inmortales haría extremadamente lenta la simulación.
+
+<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/correcion.png?raw=true" alt="Sublime's custom image"/>
+  </p>		
+
 
 11. Para finalizar, implemente la opción STOP.
 
