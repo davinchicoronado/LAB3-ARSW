@@ -1,0 +1,1 @@
+Si se pude crear una condición de carrera ya que en el contendor que guarda los "inmortales"  se estan eliminando estos hilos  antes de que uno quede verdaderamente sin vida provocando resultados incorrectos como la invariante que es la vida en total de todos los jugadores 
