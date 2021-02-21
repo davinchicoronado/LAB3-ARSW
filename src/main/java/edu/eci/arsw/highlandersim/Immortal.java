@@ -36,6 +36,7 @@ public class Immortal extends Thread {
     public void run() {
 
         while (health!=0) {
+            
             controller.isPaused();
 
             Immortal im;
