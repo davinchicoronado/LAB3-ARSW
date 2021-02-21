@@ -118,12 +118,13 @@ Sincronización y Dead-Locks.
 
 9. 	Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos	grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
 
-	Luego de desarrollar el punto 6 y ejecutandolo varias veces  se pudó evidenciar que no ocurrienron errores y en ningún momento se detuvo la ejecución ademas de que la información proporcionada estaba bien, por esta razón se omiten los puntos 7 y 8, cabe destacar que en las pruebas también no hubo ningún problema con los casos de 100, 1000 o 10000 inmortales.
+	Luego de desarrollar el punto 6 y ejecutandolo varias veces  se pudó evidenciar que no ocurrieron errores y en ningún momento se detuvo la ejecución ademas de que la información proporcionada estaba bien, por esta razón se omiten los puntos 7 y 8, cabe destacar que en las pruebas también no hubo ningún problema con los casos de 100, 1000 o 10000 inmortales.
 
-10. 	Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
+10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
+
 	* 	Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
 	* 	Corrija el problema anterior __SIN hacer uso de sincronización__, pues volver secuencial el acceso a la lista compartida de inmortales haría extremadamente lenta la simulación.
-
+Esta parte es simple se debe cambiar el bucle infinito y poner la condición para cuando el inmortal tenga vida 0 este bucle finalice y despues que este se borre del arraylist.
 <p align="center">
     <img src="https://github.com/davinchicoronado/LAB3-ARSW/blob/master/img/media/correcion.png?raw=true" alt="Sublime's custom image"/>
   </p>		
